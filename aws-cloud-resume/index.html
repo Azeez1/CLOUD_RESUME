@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Resume</title>
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- AOS Library CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
+    <!-- Header Section -->
+    <header id="home">
+        <div class="intro" data-aos="fade-down">
+            <h1>Your Name</h1>
+            <p>DevOps Engineer | Systems Analyst | QA Engineer</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="profile-pic">
+                <img src="images/profile.jpg" alt="Profile Picture">
+            </div>
+            <div class="bio">
+                <p>Brief introduction about yourself, your interests, and professional background.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" data-aos="fade-right">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <!-- Timeline Item -->
+            <div class="timeline-item" data-aos="fade-up">
+                <h3>DevOps Engineer</h3>
+                <span>Accenture Federal Services | 2024 - Present</span>
+                <p>Describe your role and responsibilities.</p>
+            </div>
+            <!-- Add more timeline items as needed -->
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" data-aos="fade-left">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <!-- Skill Item -->
+            <div class="skill-item" data-aos="zoom-in">
+                <h3>Python</h3>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%;"></div>
+                </div>
+            </div>
+            <!-- Add more skill items as needed -->
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" data-aos="fade-up">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <!-- Project Item -->
+            <div class="project-item" data-aos="flip-left">
+                <h3>Serverless Movies API</h3>
+                <p>Brief description of the project.</p>
+            </div>
+            <!-- Add more project items as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Feel free to reach out via email or connect on LinkedIn.</p>
+        <ul>
+            <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></li>
+            <li>GitHub: <a href="https://github.com/Azeez1">github.com/Azeez1</a></li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- AOS Library JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link to External JavaScript -->
+    <script src="scripts/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
+</body>
+</html>
