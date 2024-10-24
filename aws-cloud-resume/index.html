@@ -1,121 +1,232 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Meta Information -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Resume</title>
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="styles/styles.css">
+/* Root Variables */
+:root {
+    --primary-color: #000000; /* Black */
+    --secondary-color: #ffffff; /* White */
+    --accent-color: #FFD700; /* Gold */
+    --text-color: #333333; /* Dark gray for text */
+}
 
-    <!-- AOS Library CSS for Animations -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation Menu -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
 
-    <!-- Header Section -->
-    <header id="home">
-        <div class="intro" data-aos="fade-down">
-            <h1>Your Name</h1>
-            <p>DevOps Engineer | Systems Analyst | QA Engineer</p>
-            <a href="#contact" class="btn">Get in Touch</a>
-        </div>
-    </header>
+/* Navigation Styles */
+nav {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
 
-    <!-- About Section -->
-    <section id="about" data-aos="fade-up">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="profile-pic">
-                <img src="images/profile.jpg" alt="Profile Picture">
-            </div>
-            <div class="bio">
-                <p>Brief introduction about yourself, your interests, and professional background.</p>
-            </div>
-        </div>
-    </section>
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
 
-    <!-- Experience Section -->
-    <section id="experience" data-aos="fade-right">
-        <h2>Experience</h2>
-        <div class="timeline">
-            <!-- Timeline Item -->
-            <div class="timeline-item" data-aos="fade-up">
-                <h3>DevOps Engineer</h3>
-                <span>Accenture Federal Services | 2024 - Present</span>
-                <p>Describe your role and responsibilities.</p>
-            </div>
-            <!-- Add more timeline items as needed -->
-        </div>
-    </section>
+nav ul li {
+    margin: 0 15px;
+}
 
-    <!-- Skills Section -->
-    <section id="skills" data-aos="fade-left">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <!-- Skill Item -->
-            <div class="skill-item" data-aos="zoom-in">
-                <h3>Python</h3>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 90%;"></div>
-                </div>
-            </div>
-            <!-- Add more skill items as needed -->
-        </div>
-    </section>
+nav ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s;
+}
 
-    <!-- Projects Section -->
-    <section id="projects" data-aos="fade-up">
-        <h2>Projects</h2>
-        <div class="projects-container">
-            <!-- Project Item -->
-            <div class="project-item" data-aos="flip-left">
-                <h3>Serverless Movies API</h3>
-                <p>Brief description of the project.</p>
-            </div>
-            <!-- Add more project items as needed -->
-        </div>
-    </section>
+nav ul li a:hover {
+    color: var(--accent-color);
+}
 
-    <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Feel free to reach out via email or connect on LinkedIn.</p>
-        <ul>
-            <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></li>
-            <li>GitHub: <a href="https://github.com/Azeez1">github.com/Azeez1</a></li>
-        </ul>
-    </section>
+/* Header Styles */
+header {
+    height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
-    </footer>
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
 
-    <!-- Scripts -->
-    <!-- AOS Library JS for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <!-- Link to External JavaScript -->
-    <script src="scripts/main.js"></script>
-    <script>
-        // Initialize AOS Animations
-        AOS.init({
-            duration: 1000,
-            once: true,  // Ensure animation happens only once on scroll
-        });
-    </script>
-</body>
-</html>
+header p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+header .btn {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header .btn:hover {
+    background-color: darken(var(--accent-color), 10%);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 20px;
+    margin: 80px 0; /* To avoid overlap with fixed navbar */
+    background: var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* About Section */
+#about .about-content {
+    display: flex;
+    align-items: center;
+}
+
+#about .profile-pic img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 5px solid var(--accent-color); /* Gold border */
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+}
+
+.timeline-item {
+    width: 45%;
+    padding: 20px;
+    position: relative;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 55%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -8px;
+    width: 15px;
+    height: 15px;
+    background: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.skill-item {
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 20px;
+    background-color: var(--accent-color);
+}
+
+/* Projects Section */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project-item {
+    width: 45%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Contact Section */
+#contact ul {
+    list-style: none;
+    text-align: center;
+}
+
+#contact ul li {
+    margin: 10px 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust navigation */
+    nav ul {
+        flex-direction: column;
+    }
+    /* Adjust sections */
+    .about-content, .skills-container, .projects-container {
+        flex-direction: column;
+    }
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+    }
+    .skill-item, .project-item {
+        width: 100%;
+    }
+}
