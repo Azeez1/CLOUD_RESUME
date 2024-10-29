@@ -4,10 +4,6 @@ provider "aws" {
 
 resource "aws_s3_bucket" "resume_bucket" {
   bucket = "resume-azeez"  # Your specified S3 bucket name
-
-  website {
-    index_document = "index.html"
-  }
 }
 
 resource "aws_s3_bucket_policy" "public_access" {
@@ -24,6 +20,12 @@ resource "aws_s3_bucket_policy" "public_access" {
       },
     ]
   })
+}
+
+resource "aws_s3_bucket_website_configuration" "website" {
+  bucket = aws_s3_bucket.resume_bucket.id
+
+  index_document = "index.html"
 }
 
 resource "aws_dynamodb_table" "visitors" {
@@ -84,6 +86,7 @@ resource "aws_lambda_function" "update_visitor_count" {
   runtime       = "python3.8"
   timeout       = 10
 
+  filename       = "lambda_function.zip"  # Path to your zip file
   source_code_hash = filebase64sha256("lambda_function.zip")
 
   environment {
@@ -138,4 +141,3 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 output "api_url" {
   value = "https://nwz4qtjnv9.execute-api.us-east-1.amazonaws.com/update"  # Correct API endpoint
 }
-# END OF SCRIPT 
