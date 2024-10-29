@@ -1,17 +1,33 @@
-
 provider "aws" {
   region = "us-east-1"
 }
 
 resource "aws_s3_bucket" "resume_bucket" {
-  bucket = "your-unique-resume-bucket-name"
+  bucket = "resume-azeez"  # Your specified S3 bucket name
+
   website {
     index_document = "index.html"
   }
 }
 
+resource "aws_s3_bucket_policy" "public_access" {
+  bucket = aws_s3_bucket.resume_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = "*"
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.resume_bucket.arn}/*"
+      },
+    ]
+  })
+}
+
 resource "aws_dynamodb_table" "visitors" {
-  name         = "Visitors"
+  name         = "Visitors"  # Your specified DynamoDB table name
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
@@ -45,7 +61,10 @@ resource "aws_iam_policy" "dynamodb_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "dynamodb:UpdateItem"
+        Action = [
+          "dynamodb:UpdateItem",
+          "dynamodb:GetItem"  # Added GetItem permission if needed
+        ]
         Effect = "Allow"
         Resource = aws_dynamodb_table.visitors.arn
       },
@@ -59,7 +78,7 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
 }
 
 resource "aws_lambda_function" "update_visitor_count" {
-  function_name = "UpdateVisitorCount"
+  function_name = "UpdateVisitorCount"  # Your specified Lambda function name
   handler       = "lambda_function.lambda_handler"
   role          = aws_iam_role.lambda_role.arn
   runtime       = "python3.8"
@@ -68,12 +87,12 @@ resource "aws_lambda_function" "update_visitor_count" {
   source_code_hash = filebase64sha256("lambda_function.zip")
 
   environment {
-    DYNAMODB_TABLE = aws_dynamodb_table.visitors.name
+    DYNAMODB_TABLE = aws_dynamodb_table.visitors.name  # Reference to the DynamoDB table
   }
 }
 
 resource "aws_api_gateway_rest_api" "visitor_counter_api" {
-  name        = "VisitorCounterAPI"
+  name        = "VisitorCounterAPI"  # Your specified API name
   description = "API for updating visitor count"
 }
 
@@ -90,12 +109,27 @@ resource "aws_api_gateway_method" "post_method" {
   authorization = "NONE"
 
   integration {
-    type              = "AWS_PROXY"
-    integration_http_method = "POST"
-    uri               = aws_lambda_function.update_visitor_count.invoke_arn
+    type                      = "AWS_PROXY"
+    integration_http_method  = "POST"
+    uri                       = aws_lambda_function.update_visitor_count.invoke_arn
   }
 }
 
+resource "aws_lambda_permission" "allow_api_gateway" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.update_visitor_count.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.visitor_counter_api.execution_arn}/*"
+}
+
+resource "aws_api_gateway_deployment" "api_deployment" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+  stage_name  = "prod"
+
+  depends_on = [aws_api_gateway_method.post_method]  # Ensure the method is created before deployment
+}
+
 output "api_url" {
-  value = "${aws_api_gateway_rest_api.visitor_counter_api.execution_arn}/update"
+  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/update"  # Output the API URL
 }
