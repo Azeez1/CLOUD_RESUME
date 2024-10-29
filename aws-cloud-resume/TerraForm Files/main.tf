@@ -87,7 +87,9 @@ resource "aws_lambda_function" "update_visitor_count" {
   source_code_hash = filebase64sha256("lambda_function.zip")
 
   environment {
-    DYNAMODB_TABLE = aws_dynamodb_table.visitors.name  # Reference to the DynamoDB table
+    variables = {  # Correct way to define environment variables
+      DYNAMODB_TABLE = aws_dynamodb_table.visitors.name  # Reference to the DynamoDB table
+    }
   }
 }
 
@@ -107,12 +109,15 @@ resource "aws_api_gateway_method" "post_method" {
   resource_id   = aws_api_gateway_resource.update_resource.id
   http_method   = "POST"
   authorization = "NONE"
+}
 
-  integration {
-    type                      = "AWS_PROXY"
-    integration_http_method  = "POST"
-    uri                       = aws_lambda_function.update_visitor_count.invoke_arn
-  }
+resource "aws_api_gateway_integration" "post_integration" {
+  rest_api_id             = aws_api_gateway_rest_api.visitor_counter_api.id
+  resource_id             = aws_api_gateway_resource.update_resource.id
+  http_method             = aws_api_gateway_method.post_method.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.update_visitor_count.invoke_arn
 }
 
 resource "aws_lambda_permission" "allow_api_gateway" {
@@ -131,5 +136,6 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 }
 
 output "api_url" {
-  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/update"  # Output the API URL
+  value = "https://nwz4qtjnv9.execute-api.us-east-1.amazonaws.com/update"  # Correct API endpoint
 }
+# END OF SCRIPT 
