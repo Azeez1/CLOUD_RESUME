@@ -25,7 +25,9 @@ resource "aws_s3_bucket_policy" "public_access" {
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.resume_bucket.id
 
-  index_document = "index.html"
+  index_document {
+    suffix = "index.html"  # Corrected to use a block for index document
+  }
 }
 
 resource "aws_dynamodb_table" "visitors" {
