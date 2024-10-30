@@ -53,7 +53,7 @@ resource "aws_iam_policy" "dynamodb_policy" {
           "dynamodb:UpdateItem",
           "dynamodb:GetItem"  # Permissions for the Lambda function
         ]
-        Effect = "Allow"
+        Effect   = "Allow"
         Resource = aws_dynamodb_table.visitors.arn
       },
     ]
@@ -131,4 +131,3 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 output "api_url" {
   value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/update"  # Dynamic API endpoint
 }
-#########END OF SCRIPTSS
