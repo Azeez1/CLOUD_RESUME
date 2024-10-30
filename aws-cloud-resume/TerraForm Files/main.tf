@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "resume_bucket" {
-  bucket = "resume-azeez"  # Your specified S3 bucket name
+  bucket = "resume-azeez-unique"  # Updated to a unique bucket name
 }
 
 resource "aws_s3_bucket_policy" "public_access" {
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 resource "aws_dynamodb_table" "visitors" {
-  name         = "Visitors"  # Your specified DynamoDB table name
+  name         = "Visitors2024"  # Updated to a unique table name
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
@@ -143,3 +143,4 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 output "api_url" {
   value = "https://nwz4qtjnv9.execute-api.us-east-1.amazonaws.com/update"  # Correct API endpoint
 }
+############## END SCRIPT 2 
