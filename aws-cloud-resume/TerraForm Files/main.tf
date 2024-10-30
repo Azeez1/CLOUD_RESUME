@@ -121,9 +121,14 @@ resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
   stage_name  = "prod"
 
-  depends_on = [aws_api_gateway_method.post_method]  # Ensure the method is created before deployment
+  # Ensure that the deployment only occurs after the API method and integration are created
+  depends_on = [
+    aws_api_gateway_method.post_method,
+    aws_api_gateway_integration.post_integration
+  ]
 }
 
 output "api_url" {
   value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/update"  # Dynamic API endpoint
 }
+#########END OF SCRIPTSS
