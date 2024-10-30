@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "resume_bucket" {
-  bucket = "resume-azeez-unique"  # Updated to a unique bucket name
+  bucket = "resume-azeez-unique"  # Changed to a unique bucket name
 }
 
 resource "aws_s3_bucket_policy" "public_access" {
@@ -26,12 +26,12 @@ resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.resume_bucket.id
 
   index_document {
-    suffix = "index.html"  # Corrected to use a block for index document
+    suffix = "index.html"  # Correct usage for index document
   }
 }
 
 resource "aws_dynamodb_table" "visitors" {
-  name         = "Visitors2024"  # Updated to a unique table name
+  name         = "Visitors2024"  # Changed to a unique table name
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
@@ -67,7 +67,7 @@ resource "aws_iam_policy" "dynamodb_policy" {
       {
         Action = [
           "dynamodb:UpdateItem",
-          "dynamodb:GetItem"  # Added GetItem permission if needed
+          "dynamodb:GetItem"  # Permissions for the Lambda function
         ]
         Effect = "Allow"
         Resource = aws_dynamodb_table.visitors.arn
@@ -143,4 +143,3 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 output "api_url" {
   value = "https://nwz4qtjnv9.execute-api.us-east-1.amazonaws.com/update"  # Correct API endpoint
 }
-############## END SCRIPT 2 
