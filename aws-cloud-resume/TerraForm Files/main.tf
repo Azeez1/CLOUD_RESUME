@@ -141,5 +141,5 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 }
 
 output "api_url" {
-  value = "https://nwz4qtjnv9.execute-api.us-east-1.amazonaws.com/update"  # Correct API endpoint
+  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}/update"  # Dynamic API endpoint
 }
