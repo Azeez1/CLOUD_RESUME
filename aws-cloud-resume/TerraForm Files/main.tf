@@ -6,22 +6,6 @@ resource "aws_s3_bucket" "resume_bucket" {
   bucket = "resume-azeez-unique"  # Changed to a unique bucket name
 }
 
-resource "aws_s3_bucket_policy" "public_access" {
-  bucket = aws_s3_bucket.resume_bucket.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = "*"
-        Action   = "s3:GetObject"
-        Resource = "${aws_s3_bucket.resume_bucket.arn}/*"
-      },
-    ]
-  })
-}
-
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.resume_bucket.id
 
@@ -82,7 +66,7 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb" {
 }
 
 resource "aws_lambda_function" "update_visitor_count" {
-  function_name = "UpdateVisitorCount"  # Your specified Lambda function name
+  function_name = "UpdateVisitorCount2024"  # Changed to a unique Lambda function name
   handler       = "lambda_function.lambda_handler"
   role          = aws_iam_role.lambda_role.arn
   runtime       = "python3.8"
