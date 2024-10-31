@@ -69,7 +69,7 @@ resource "aws_lambda_function" "update_visitor_count" {
   function_name = "UpdateVisitorCount2024"  # Changed to a unique Lambda function name
   handler       = "lambda_function.lambda_handler"
   role          = aws_iam_role.lambda_role.arn
-  runtime       = "python3.8"
+  runtime       = "python3.11"
   timeout       = 10
 
   filename       = "lambda_function.zip"  # Path to your zip file
