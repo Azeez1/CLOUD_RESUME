@@ -83,7 +83,7 @@ resource "aws_lambda_function" "update_visitor_count" {
 }
 
 resource "aws_apigatewayv2_api" "visitor_counter_api" {
-  name          = "VisitorCounterAPI"  # Your specified API name
+  name          = "VisitorsCounterAPI"  # Your specified API name
   protocol_type = "HTTP"
   description   = "API for updating visitor count"
 }
