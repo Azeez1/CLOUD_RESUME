@@ -1,10 +1,11 @@
+import os
 import json
 import boto3
 from decimal import Decimal
 
 def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('Visitors2024')
+    table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])  # Use environment variable
 
     # Update visitor count
     response = table.update_item(
