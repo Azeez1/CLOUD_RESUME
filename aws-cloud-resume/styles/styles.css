@@ -96,6 +96,30 @@ header .btn:hover {
     transform: scale(1.05);
 }
 
+
+
+/* Visitor Counter Styles */
+.visitor-count-container {
+    text-align: center; /* Center the text */
+    margin: 20px 0; /* Add some space above and below */
+    padding: 15px; /* Add some padding */
+    background-color: #f0f0f0; /* Light gray background */
+    border: 2px solid #007BFF; /* Blue border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+h2 {
+    font-size: 24px; /* Larger font size */
+    color: #333; /* Darker text color */
+}
+
+#visitorCount {
+    font-weight: bold; /* Make the visitor count bold */
+    color: #007BFF; /* Blue color for emphasis */
+}
+
+
 /* Section Styles */
 section {
     padding: 80px 20px;
