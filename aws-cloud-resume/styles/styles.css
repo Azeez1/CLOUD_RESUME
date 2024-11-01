@@ -96,13 +96,11 @@ header .btn:hover {
     transform: scale(1.05);
 }
 
-
-
 /* Visitor Counter Styles */
 .visitor-count-container {
     text-align: center; /* Center the text */
-    margin: 20px 0; /* Add some space above and below */
-    padding: 15px; /* Add some padding */
+    margin: 10px 0; /* Reduced space above and below */
+    padding: 10px; /* Reduced padding */
     background-color: #f0f0f0; /* Light gray background */
     border: 2px solid #007BFF; /* Blue border */
     border-radius: 8px; /* Rounded corners */
@@ -111,7 +109,7 @@ header .btn:hover {
 
 h2 {
     font-size: 24px; /* Larger font size */
-    color: ##ffffff; /* White text color */
+    color: #ffffff; /* White text color */
 }
 
 #visitorCount {
@@ -119,11 +117,10 @@ h2 {
     color: #007BFF; /* Blue color for emphasis */
 }
 
-
 /* Section Styles */
 section {
-    padding: 80px 20px;
-    margin: 80px 0;
+    padding: 40px 20px; /* Reduced padding */
+    margin: 20px 0; /* Reduced margin */
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 0.5s ease-in-out;
