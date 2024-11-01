@@ -10,10 +10,9 @@
     --primary-color: #000000; /* Black */
     --secondary-color: #ffffff; /* White */
     --accent-color: #FFD700; /* Gold */
-    --text-color: #333333; /* Dark gray for text */
-    --gradient-start: #000000;
-    --gradient-end: #333333;
-    --hover-accent-color: #FFA500; /* For button hover effect */
+    --text-color: #333333; /* Dark grey for text */
+    --dark-grey: #4A4A4A; /* Dark Grey for backgrounds */
+    --hover-accent-color: #FFA500; /* Orange for button hover effect */
 }
 
 /* Body Styles */
@@ -26,8 +25,8 @@ body {
 
 /* Navigation Styles */
 nav {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    padding: 10px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-grey));
+    padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -60,7 +59,7 @@ nav ul li a:hover {
 /* Header Styles */
 header {
     height: 100vh;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-grey));
     color: var(--secondary-color);
     display: flex;
     align-items: center;
@@ -81,6 +80,7 @@ header p {
     margin-bottom: 20px;
 }
 
+/* Button Styles */
 header .btn {
     padding: 10px 20px;
     background: linear-gradient(135deg, var(--accent-color), var(--hover-accent-color));
@@ -99,28 +99,28 @@ header .btn:hover {
 /* Visitor Counter Styles */
 .visitor-count-container {
     text-align: center; /* Center the text */
-    margin: 10px 0; /* Reduced space above and below */
-    padding: 10px; /* Reduced padding */
-    background-color: #f0f0f0; /* Light gray background */
-    border: 2px solid #007BFF; /* Blue border */
+    margin: 20px 0; /* Space above and below */
+    padding: 15px; /* Padding */
+    background-color: var(--dark-grey); /* Dark grey background */
+    border: 2px solid var(--accent-color); /* Gold border */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
 }
 
-h2 {
+.visitor-count-container h2 {
     font-size: 24px; /* Larger font size */
-    color: #ffffff; /* White text color */
+    color: var(--secondary-color); /* White text color */
 }
 
 #visitorCount {
-    font-weight: bold; /* Make the visitor count bold */
-    color: #007BFF; /* Blue color for emphasis */
+    font-weight: bold; /* Bold visitor count */
+    color: var(--accent-color); /* Gold for emphasis */
 }
 
 /* Section Styles */
 section {
-    padding: 40px 20px; /* Reduced padding */
-    margin: 20px 0; /* Reduced margin */
+    padding: 60px 20px; /* Consistent padding */
+    margin: 20px 0; /* Uniform margin */
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 0.5s ease-in-out;
@@ -137,34 +137,14 @@ section {
     }
 }
 
-/* About Section */
-#about {
-    background: linear-gradient(135deg, var(--secondary-color), #f7f7f7);
-    color: var(--text-color);
-}
-
-/* Experience Section */
-#experience {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-/* Skills Section */
-#skills {
-    background: linear-gradient(135deg, #4A4A4A, #e6e6e6);
-    color: var(--text-color);
-}
-
-/* Projects Section */
-#projects {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-/* Contact Section */
+/* Section Backgrounds */
+#about,
+#projects,
+#experience,
+#skills,
 #contact {
-    background: linear-gradient(135deg, #4A4A4A, #d9d9d9);
-    color: var(--text-color);
+    background: var(--dark-grey); /* Uniform dark grey background */
+    color: var(--secondary-color);
 }
 
 /* About Section - Content Styling */
