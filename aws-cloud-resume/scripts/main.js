@@ -51,4 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
             skillsAnimated = true; // Prevent reanimation
         }
     });
+
+    // Fetch and Display Visitor Count
+    async function fetchVisitorCount() {
+        try {
+            const response = await fetch('https://f9cnbiiy95.execute-api.us-east-1.amazonaws.com/prod/update'); // Update with your API endpoint this will change based on deployment
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            document.getElementById('visitorCount').textContent = data.visits; // Ensure this matches your HTML
+        } catch (error) {
+            console.error('Error fetching visitor count:', error);
+        }
+    }
+
+    fetchVisitorCount(); // Call the function to get visitor count on page load
 });
