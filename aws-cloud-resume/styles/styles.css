@@ -125,8 +125,8 @@ section {
 
 #about .profile-pic img {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
     border: 5px solid var(--accent-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
