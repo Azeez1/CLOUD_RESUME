@@ -100,7 +100,6 @@ header .btn:hover {
 section {
     padding: 80px 20px;
     margin: 80px 0;
-    background: var(--secondary-color);
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 0.5s ease-in-out;
@@ -118,6 +117,36 @@ section {
 }
 
 /* About Section */
+#about {
+    background: linear-gradient(135deg, var(--secondary-color), #f7f7f7);
+    color: var(--text-color);
+}
+
+/* Experience Section */
+#experience {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Skills Section */
+#skills {
+    background: linear-gradient(135deg, #ffffff, #e6e6e6);
+    color: var(--text-color);
+}
+
+/* Projects Section */
+#projects {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Contact Section */
+#contact {
+    background: linear-gradient(135deg, #ffffff, #d9d9d9);
+    color: var(--text-color);
+}
+
+/* About Section - Content Styling */
 #about .about-content {
     display: flex;
     align-items: center;
@@ -131,7 +160,7 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Experience Section */
+/* Experience Section - Timeline */
 .timeline {
     position: relative;
     padding: 20px 0;
